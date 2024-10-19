@@ -10,6 +10,7 @@ import { AxiosError } from 'axios';
 import { LockKeyhole, Mail, SquareUser } from 'lucide-react';
 import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
+import { toast } from 'react-toastify';
 
 
 const SignupValues = z.object({
@@ -46,6 +47,7 @@ export function Signup() {
                 // const message = res.data?.message;
                 // message.success(res.data.message || 'Registration successful');
                 navigate('/login');
+                toast.success("Registration completed!")
             }
         } catch (err) {
             if (err instanceof AxiosError) {

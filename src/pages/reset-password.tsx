@@ -9,6 +9,7 @@ import { AxiosError } from 'axios';
 import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
 import { Eye, EyeOff, LockKeyhole } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const ResetPasswordSchema = z.object({
     password: z.string()
@@ -45,6 +46,7 @@ export function ResetPassword() {
             const res = await api.post(`/reset-password/${token}`, data);
             if (res.status === 200) {
                 navigate('/login');
+                toast.success("Password reset!")
             }
         } catch (err) {
             if (err instanceof AxiosError) {

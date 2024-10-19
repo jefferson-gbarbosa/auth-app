@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
 import { Button } from '../components/button';
+import { toast } from 'react-toastify';
 
 const PasswordSchema = z.object({
     email: z.string().min(1, { message: 'This is required' }).email({ message: 'Must be a valid email' }),
@@ -28,6 +29,7 @@ export function ForgotPassword() {
             if (res.status === 200) {
                 // Optionally show success message
                 navigate('/login');
+                toast.success("Email sent!")
             }
         } catch (err) {
             if (err instanceof AxiosError) {
