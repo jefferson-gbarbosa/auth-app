@@ -46,6 +46,7 @@ export function ForgotPassword() {
                 className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
                 onSubmit={handleSubmit(onSubmit)}
             >
+                <h2 className='text-3xl mb-8 border-[#11181C]'>Enter your email to reset your password!</h2>
                 {error && <div className="text-red-600 mb-4">{error}</div>}
                 
                 <Form.Field name='email' className='mb-4'>

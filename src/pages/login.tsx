@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import * as Form from "@radix-ui/react-form";
 import { AxiosError } from 'axios';
-import { HeaderForms } from '../components/header-forms';
 import { api } from '../api/axios';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -59,7 +58,6 @@ export function Login() {
 
     return (
         <>
-            <HeaderForms />
             <Form.Root 
                 className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
                 onSubmit={handleSubmit(onSubmit)}
