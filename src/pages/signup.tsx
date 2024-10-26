@@ -46,8 +46,20 @@ export function Signup() {
             if (res.status === 200) {
                 // const message = res.data?.message;
                 // message.success(res.data.message || 'Registration successful');
-                navigate('/login');
-                toast.success("Registration completed!")
+                toast.success('Registration completed!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setTimeout(()=> {
+                    navigate('/login');
+                },4000)
+               
             }
         } catch (err) {
             if (err instanceof AxiosError) {

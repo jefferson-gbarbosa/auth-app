@@ -28,8 +28,19 @@ export function ForgotPassword() {
             const res = await api.post('/forgot-password', data);
             if (res.status === 200) {
                 // Optionally show success message
-                navigate('/login');
-                toast.success("Email sent!")
+                toast.success('Email sent! check your email inbox.', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setTimeout(()=> {
+                    navigate('/login');
+                },4000)
             }
         } catch (err) {
             if (err instanceof AxiosError) {

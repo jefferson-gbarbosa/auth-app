@@ -10,7 +10,6 @@ import { Eye, EyeOff, LockKeyhole, Mail } from 'lucide-react';
 import { Button } from '../components/button';
 
 
-
 const LoginValues = z.object({
     email: z.string().min(1, { message: 'This is required' }).email({ message: 'Must be a valid email' }),
     password: z.string().min(1, { message: 'This is required' }).min(6, { message: 'Too short' }),

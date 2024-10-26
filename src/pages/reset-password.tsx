@@ -45,8 +45,19 @@ export function ResetPassword() {
         try {
             const res = await api.post(`/reset-password/${token}`, data);
             if (res.status === 200) {
-                navigate('/login');
-                toast.success("Password reset!")
+                toast.success('Password reset!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                setTimeout(()=> {
+                    navigate('/login');
+                },4000)
             }
         } catch (err) {
             if (err instanceof AxiosError) {
