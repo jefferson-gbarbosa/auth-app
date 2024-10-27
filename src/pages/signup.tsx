@@ -7,7 +7,7 @@ import { useForm} from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
-import { LockKeyhole, Mail, SquareUser } from 'lucide-react';
+import { Eye, EyeOff, LockKeyhole, Mail, SquareUser } from 'lucide-react';
 import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
 import { toast } from 'react-toastify';
@@ -32,10 +32,14 @@ export function Signup() {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState<string>('');
+    const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm<SignupValues>({
         resolver:zodResolver(SignupValues)
     });
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(prev => !prev);
+    };
 
     async function onSubmit(data: SignupValues) {
         setLoading(true);
@@ -115,13 +119,16 @@ export function Signup() {
                     <Form.Label className='text-[#11181C]'>Password</Form.Label>
                     <div className="relative">
                         <LockKeyhole size={20}  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
-                        <input
-                        {...register("password", { required: "Password is required" })}
-                        className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.password ? 'border-red-600' : ''}`}
-                        type="password"
-                        placeholder="Enter your password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
+                            {showPassword ? <Eye size={20} className="text-gray-500" /> : <EyeOff size={20} className="text-gray-500" />}
+                        </div>
+                         <input
+                            {...register("password", { required: "Password is required" })}
+                            className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.password ? 'border-red-600' : ''}`}
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
                     {errors.password && <span className="text-red-600">{errors.password.message}</span>}
                 </Form.Field>
