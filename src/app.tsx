@@ -6,6 +6,7 @@ import { Login } from './pages/login';
 import { Profile } from './pages/profile';
 import { ForgotPassword } from './pages/forgot-password';
 import { ResetPassword } from './pages/reset-password';
+import { EmailVerification } from './pages/email-verification';
 
 export function App() {
   return (
@@ -17,6 +18,7 @@ export function App() {
           <Route path= '/profile' element={<Profile />}/>
           <Route path= '/forgot-password' element={<ForgotPassword />}/>
           <Route path= '/reset-password/:token' element={<ResetPassword />}/>
+          <Route path= '/email-verification' element={<EmailVerification />}/>
           {/* <Route path= '*' element={<Error />}/> */}
       </Routes>
     </BrowserRouter>
