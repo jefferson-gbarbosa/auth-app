@@ -9,6 +9,7 @@ import { AxiosError } from 'axios';
 import { Button } from '../components/button';
 import { toast } from 'react-toastify';
 import { Mail } from 'lucide-react';
+import { Header } from './header';
 
 const PasswordSchema = z.object({
     email: z.string().min(1, { message: 'This is required' }).email({ message: 'Must be a valid email' }),
@@ -62,6 +63,7 @@ export function ForgotPassword() {
 
     return (
         <>  
+           <Header />
            <div className="p-8 bg-white fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 rounded-xl border border-solid border-[#11181C]">
            <h2 className='text-3xl mb-2 border-[#11181C] text-center'>Forgot Password</h2>
             {!isSubmitted ? (

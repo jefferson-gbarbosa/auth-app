@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-toastify';
 import { Button } from '../components/button';
 import { AxiosError } from 'axios';
+import { Header } from './header';
 
 const OTPValues = z.object({
 	otp: z
@@ -110,6 +111,7 @@ export function EmailVerification() {
 
 	return (
 		<>
+		    <Header />
 			<Form.Root 
 				className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
 				onSubmit={handleSubmit(onSubmit)}
