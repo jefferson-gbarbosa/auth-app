@@ -33,15 +33,14 @@ export function Login() {
     const onSubmit = async (data: LoginValues) => { 
         setLoading(true);
         setError(null);
-
+    
         try {
             const res = await api.post('/login', data);
-            console.log(res.data.token)
             if (res.status === 200) {
-                localStorage.setItem('refreshToken', res.data.token);
+                localStorage.setItem('token', res.data.token);
                 navigate('/profile');   
             }
-            // api.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+           
         } catch (err) {
             if (err instanceof AxiosError) {
                 const message = err.response?.data?.message || 'An error occurred';
@@ -62,9 +61,7 @@ export function Login() {
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <h2 className='text-3xl mb-0.5 border-[#11181C]'>Welcome back! &#128079;</h2>
-                <p className='inline-block text-base mb-4 text-[#687076]'>Login with your account!</p>
-                {error && <div className="text-red-600 mb-4">{error}</div>}
-                
+                <p className='inline-block text-base mb-4 text-[#687076]'>Login with your account!</p> 
                 <Form.Field name='email' className='mb-4'>
                     <Form.Label className='text-[#11181C]'>Email</Form.Label>
                     <div className='relative'>
@@ -104,6 +101,7 @@ export function Login() {
                 <div className='text-center text-sm'>
                     Don’t have an account? <Link to="/register" className='text-[#11181C] cursor-pointer hover:underline hover:text-[#687076]'>Signup</Link>
                 </div>
+                {error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
             </Form.Root>
         </>
     );
