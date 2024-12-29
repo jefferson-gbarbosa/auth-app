@@ -47,13 +47,13 @@ Agora, você pode rodar a aplicação localmente com o comando abaixo. Ela será
 npm run dev
 ```
 ## :camera_flash: Screenshots
-*Página de Home
-![](./src/assets/img/Screenshots-01.png)
-*Página de Login
-![](./src/assets/img/Screenshots-02.png)
-*Página de Registro de Usuários
-![](./src/assets/img/Screenshots-03.png)
-*Página para Recuperação de Senhas
+* Página de Home
+![](./src/assets/img/Screenshots-01.png)<br/>
+* Página de Login
+![](./src/assets/img/Screenshots-02.png)<br/>
+* Página de Registro de Usuários
+![](./src/assets/img/Screenshots-03.png)<br/>
+* Página para Recuperação de Senhas
 ![](./src/assets/img/Screenshots-04.png)
 
 ## :email: Contato
