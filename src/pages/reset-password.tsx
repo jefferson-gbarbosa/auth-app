@@ -10,6 +10,7 @@ import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
 import { LockKeyhole } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { Header } from './header';
 
 const ResetPasswordSchema = z.object({
     password: z.string()
@@ -74,7 +75,8 @@ export function ResetPassword() {
     };
 
     return (
-        <>
+        <>  
+            <Header/>
             <Form.Root 
                 className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
                 onSubmit={handleSubmit(onSubmit)}
