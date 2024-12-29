@@ -48,8 +48,6 @@ export function Signup() {
         try {
             const res = await api.post('/signup', data);
             if (res.status === 200) {
-                // const message = res.data?.message;
-                // message.success(res.data.message || 'Registration successful');
                 toast.success('Registration completed!', {
                     position: "top-center",
                     autoClose: 3000,
@@ -61,7 +59,7 @@ export function Signup() {
                     theme: "light",
                 });
                 setTimeout(()=> {
-                    navigate('/login');
+                    navigate('/email-verification');
                 },4000)
                
             }

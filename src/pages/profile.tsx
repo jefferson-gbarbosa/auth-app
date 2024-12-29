@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from './header';
 import { Footer } from "./footer";
 import { api } from "../api/axios";
+import { ScaleLoader } from "react-spinners";
 
 
 interface ProfileData {
     name: string;
-    // Add other profile fields as necessary
 }
 
 export function Profile() {
@@ -20,14 +20,13 @@ export function Profile() {
         const fetchProfile = async () => {
             try {
                 const { data, status } = await api.get('/profile', { withCredentials: true });
-                
                 if (status === 200) {
                     setProfile(data);
                 }
             } catch (err) {
                 console.error(err);
                 setError("Failed to load profile. Redirecting to login...");
-                localStorage.removeItem("refreshToken");
+                localStorage.removeItem("token");
                 navigate('/login'); // Redireciona para o login em caso de erro
             } finally {
                 setLoading(false);
@@ -38,7 +37,13 @@ export function Profile() {
     }, [navigate]);
 
     if (loading) {
-        return <div className="flex justify-center items-center min-h-screen text-white"><p className="text-3xl">Loading...</p></div>;
+        return (
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-[#070707b6] flex justify-center items-center">
+                <div className="flex justify-center items-center min-h-screen">
+                    <ScaleLoader color="#2B805A" width={20}/>
+                </div>
+            </div>
+        )
     }
 
     if (error) {

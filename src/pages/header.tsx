@@ -6,7 +6,7 @@ import { ButtonOpen } from '../components/button-open';
 import { User } from './user';
 
 export function Header(){
-    const state = localStorage.getItem("refreshToken");
+    const state = localStorage.getItem("token");
     return(
         <header className="fixed w-full z-50">
             <nav className=" max-w-screen-xl mx-auto flex justify-between items-center py-12">

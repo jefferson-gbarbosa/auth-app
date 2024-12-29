@@ -14,7 +14,7 @@ export function ButtonLogout() {
             const res = await api.get('/logout');
             console.log(res.status)
             if (res.status === 200) {
-                localStorage.removeItem("refreshToken");
+                localStorage.removeItem("token");
                 console.log('Redirecting to home'); // Log antes do redirecionamento
                 navigate('/'); // Redireciona para a página inicial
             }
