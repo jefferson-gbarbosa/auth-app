@@ -64,8 +64,6 @@ export function ForgotPassword() {
         <>  
            <div className="p-8 bg-white fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 rounded-xl border border-solid border-[#11181C]">
            <h2 className='text-3xl mb-2 border-[#11181C] text-center'>Forgot Password</h2>
-         
-            {error && <div className="text-red-600 mb-4">{error}</div>}
             {!isSubmitted ? (
                     <Form.Root 
                         onSubmit={handleSubmit(onSubmit)}>  
@@ -93,7 +91,8 @@ export function ForgotPassword() {
                         If an account exists for <strong>{email}</strong>, you will receive a password reset link shortly.
                     </p>
                 </div>   
-            )}
+            )}    
+            {error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
            </div>
         </>
     );

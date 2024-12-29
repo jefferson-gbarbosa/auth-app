@@ -80,9 +80,7 @@ export function Signup() {
                 className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <h2 className='text-3xl mb-3 border-[#11181C]'>Sign up</h2>
-                {error && <div className="text-red-600 mb-4">{error}</div>}
-                
+                <h2 className='text-3xl mb-3 border-[#11181C]'>Sign up</h2>     
                 <Form.Field name='name' className='mb-4'>
                     <Form.Label className='text-[#11181C]'>Nome</Form.Label>
 
@@ -139,6 +137,7 @@ export function Signup() {
                 <div className='text-center text-sm'>
                     Already have an account? <Link to="/login" className='text-[#11181C] cursor-pointer hover:underline hover:text-[#687076]'>Login</Link>
                 </div>
+                {error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
             </Form.Root>
     );
 }

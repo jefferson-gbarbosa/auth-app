@@ -116,7 +116,6 @@ export function EmailVerification() {
 			>
 				<h2 className='text-3xl mb-0.5 border-[#11181C]'>Verify Your Email</h2>
 				<p className='inline-block text-base mb-4 text-[#687076]'>Enter the 6-digit code sent to your email address.</p>
-				{error && <div className="text-red-600 mb-4">{error}</div>}
 				<div className='flex justify-between mb-4' >
 					{otp.map((digit, index) => (
 						<input
@@ -135,6 +134,7 @@ export function EmailVerification() {
 				<Form.Submit asChild className='mb-6'>
 					<Button disabled={loading || isButtonDisabled} text={loading ? 'Verifying...' : 'Verify Email'} />
 				</Form.Submit>
+				{error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
 			</Form.Root>
 		</>
 	);
