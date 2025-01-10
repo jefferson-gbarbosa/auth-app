@@ -1,39 +1,89 @@
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
-export const api = axios.create({
+// Create axios instance
+const api = axios.create({
     baseURL: 'http://localhost:3000/auth',
-    withCredentials: true
+    withCredentials: true, // Ensure cookies are sent along with requests
 });
 
-// Request interceptor to add the token
-// api.interceptors.request.use(config => {
-//     const token = localStorage.getItem('token'); // Your refresh token key
-//     if (token) {
-//         config.headers['Authorization'] = `Bearer ${token}`;
-//     }
-//     return config;
-// }, error => {
-//     return Promise.reject(error);
-// });
+// // Request interceptor to add the token
+api.interceptors.request.use(
+  (config) => {
+      const headers = config.headers ?? {} 
+      const token = Cookies.get("token")
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`
+      }
+      config.headers = headers
+      return config;
+  },
+  (error) => {
+      return Promise.reject(error);
+  }
+);
+//Cria um tipo que irá servir de base para as requests falhadas
+type FailedRequestQueue = {
+  onSuccess: (newToken: string) => void
+  onFailure: () => void
+}
 
+let failedRequestsQueue: FailedRequestQueue[] = []
+let isRefreshing = false
+  
+//Interceptador para verificar se o token expirou
+api.interceptors.response.use(
+    response => response,
+    async (error) => {
+      const originalRequest = error.config;
+      if (error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        if(!isRefreshing){
+          isRefreshing = true
+          try{
+            const res = await generateRefreshToken()
+            Cookies.set("token", res.token)
+            failedRequestsQueue.forEach(request => {
+              request.onSuccess(res.token)
+            })
+          }catch{
+            Cookies.remove("token");
+            Cookies.remove("refreshToken");
+            failedRequestsQueue.forEach(request => {
+              request.onFailure()
+            })
+          }finally{
+            failedRequestsQueue = []
+            isRefreshing = false
+          }
+        }
+        return new Promise((resolve, reject) => {
+          failedRequestsQueue.push({
+            onSuccess: (newToken: string) => {
+              originalRequest.headers!['Authorization'] = `${newToken}`
+              resolve(api(originalRequest))
+            },
+            onFailure: () => {
+              reject(error)
+            }
+          })
+        })
+      }else{
+        Cookies.remove("token");
+        Cookies.remove("refreshToken");
+      }
+  
+      return Promise.reject(error);
+    } 
+  );
+  
+const generateRefreshToken = async () => {
+    try {
+      const response = await api.get('/refresh');
+      return response.data;
+    } catch (error) {
+        console.log(error)
+  };
+}
 
-// Response interceptor for error handling
-// api.interceptors.response.use(response => {
-//     return response;
-// }, async error => {
-//     if (error.response && error.response.status === 401) {
-//         // Attempt to refresh the token
-//         try {
-//             const { data } = await api.post('/refresh'); // Adjust the endpoint as necessary
-//             localStorage.setItem('refreshToken', data.token); // Store the new token
-
-//             // Retry the original request with the new token
-//             error.config.headers['Authorization'] = `Bearer ${data.token}`;
-//             return api.request(error.config);
-//         } catch (refreshError) {
-//             console.error('Failed to refresh token', refreshError);
-//             // Handle error (e.g., redirect to login)
-//         }
-//     }
-//     return Promise.reject(error);
-// });
+export { api };
