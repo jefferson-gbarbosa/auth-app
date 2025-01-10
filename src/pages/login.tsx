@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import * as Form from "@radix-ui/react-form";
 import { AxiosError } from 'axios';
-import { api } from '../api/axios';
+import { api } from '../services/axios';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';

@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import * as Form from "@radix-ui/react-form";
-import { api } from '../api/axios';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,6 +9,7 @@ import { Button } from '../components/button';
 import { toast } from 'react-toastify';
 import { Mail } from 'lucide-react';
 import { Header } from './header';
+import { api } from '../services/axios';
 
 const PasswordSchema = z.object({
     email: z.string().min(1, { message: 'This is required' }).email({ message: 'Must be a valid email' }),

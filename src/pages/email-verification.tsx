@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import * as Form from "@radix-ui/react-form";
-import { api } from '../api/axios';
 import { SubmitHandler, useForm} from 'react-hook-form'; 
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,6 +8,7 @@ import { toast } from 'react-toastify';
 import { Button } from '../components/button';
 import { AxiosError } from 'axios';
 import { Header } from './header';
+import { api } from '../services/axios';
 
 const OTPValues = z.object({
 	otp: z

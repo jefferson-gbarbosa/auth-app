@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Form from "@radix-ui/react-form";
-import { api } from '../api/axios';
 import { useForm} from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,6 +10,7 @@ import { Eye, EyeOff, LockKeyhole, Mail, SquareUser } from 'lucide-react';
 import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
 import { toast } from 'react-toastify';
+import { api } from '../services/axios';
 
 
 const SignupValues = z.object({

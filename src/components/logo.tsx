@@ -1,6 +1,5 @@
 export function Logo(){
     return(
-        // '🔐'
         <svg width="139" height="43" viewBox="0 0 139 43" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M41.4286 11H58L43.6883 35.1039H27.1169L41.4286 11Z" fill="#2b805a"/>
         <path d="M26.3636 11H38.4156L24.1039 35.1039H12.0519L26.3636 11Z" fill="#63b68c"/>

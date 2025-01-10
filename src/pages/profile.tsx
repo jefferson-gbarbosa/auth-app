@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Header } from './header';
 import { Footer } from "./footer";
-import { api } from "../api/axios";
 import { ScaleLoader } from "react-spinners";
+import { api } from "../services/axios";
 
 
 interface ProfileData {
