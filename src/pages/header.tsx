@@ -4,17 +4,22 @@ import { Logo } from '../components/logo';
 import { ButtonLogout } from '../components/button-logout';
 import { ButtonOpen } from '../components/button-open';
 import { User } from './user';
+import { useEffect, useState } from 'react';
 
 export function Header(){
     const location = useLocation();  
-    const token = localStorage.getItem("token");
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
-    const isLoggedIn = token !== null && token !== undefined;
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(token !== null && token !== undefined);
+      }, [location]);
 
-    const isLoginPage = location.pathname === '/login' 
-                        || location.pathname === '/email-verification' 
-                        || location.pathname === '/reset-password'
-                        || location.pathname === '/forgot-password'; 
+    const isLoginPage = 
+        location.pathname === '/login' || 
+        location.pathname === '/email-verification' || 
+        location.pathname === '/reset-password'|| 
+        location.pathname === '/forgot-password'; 
     return(
         <header className="fixed w-full z-50">
             <nav className=" max-w-screen-xl mx-auto flex justify-between items-center py-12">
@@ -24,7 +29,7 @@ export function Header(){
                 {!isLoginPage && (
                     <ul className="flex justify-between items-center">
                      {isLoggedIn?  <User /> :  <List/>}
-                     {isLoggedIn ? <ButtonLogout /> : <ButtonOpen />}
+                     {isLoggedIn ? <ButtonLogout setIsAuthenticated={setIsLoggedIn}/> : <ButtonOpen />}
                  </ul>
                 )}
             </nav>
