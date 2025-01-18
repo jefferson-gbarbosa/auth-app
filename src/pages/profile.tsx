@@ -27,7 +27,7 @@ export function Profile() {
                 console.error(err);
                 setError("Failed to load profile. Redirecting to login...");
                 localStorage.removeItem("token");
-                navigate('/login'); // Redireciona para o login em caso de erro
+                navigate('/login');
             } finally {
                 setLoading(false);
             }

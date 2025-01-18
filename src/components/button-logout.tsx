@@ -11,8 +11,8 @@ export function ButtonLogout({ setIsAuthenticated }: ButtonLogoutProps) {
     const [loading, setLoading] = useState<boolean>(false);
 
     const handleLogout = async (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault(); // Previne o comportamento padrão do botão
-        setLoading(true); // Inicia o indicador de carregamento
+        event.preventDefault(); 
+        setLoading(true); 
         try {
             const res = await api.get('/logout');
             console.log(res.status)
@@ -20,12 +20,12 @@ export function ButtonLogout({ setIsAuthenticated }: ButtonLogoutProps) {
                 localStorage.removeItem("token");
                 console.log('Redirecting to home');
                 setIsAuthenticated(false);
-                navigate('/home'); // Redireciona para a página inicial
+                navigate('/home'); 
             }
         } catch (err) {
             console.error("Logout error:", err);
         } finally {
-            setLoading(false); // Finaliza o indicador de carregamento
+            setLoading(false);
         }
     };
 

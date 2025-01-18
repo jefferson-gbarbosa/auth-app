@@ -23,8 +23,8 @@ export const Button: React.FC<ButtonProps> = ({ disabled, text }) => {
             ease-in-out 
             transform 
             ${disabled 
-                ? 'bg-gray-400 text-gray-300 cursor-not-allowed' // Estilo para o botão desativado
-                : 'bg-[#2B805A] text-white hover:text-[#11181C] hover:scale-105 ' // Estilo para o botão ativo
+                ? 'bg-gray-400 text-gray-300 cursor-not-allowed' 
+                : 'bg-[#2B805A] text-white hover:text-[#11181C] hover:scale-105 '
             }
         `}
         >

@@ -2,7 +2,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { List } from '../components/list';
 import { Logo } from '../components/logo';
 import { ButtonLogout } from '../components/button-logout';
-import { ButtonOpen } from '../components/button-open';
 import { User } from './user';
 import { useEffect, useState } from 'react';
 
@@ -29,7 +28,14 @@ export function Header(){
                 {!isLoginPage && (
                     <ul className="flex justify-between items-center">
                      {isLoggedIn?  <User /> :  <List/>}
-                     {isLoggedIn ? <ButtonLogout setIsAuthenticated={setIsLoggedIn}/> : <ButtonOpen />}
+                     {isLoggedIn ? <ButtonLogout setIsAuthenticated={setIsLoggedIn}/> : 
+                        <Link to='/login'
+                           className="ml-3 p-2.5 text-white 
+                            text-xl bg-none outline-none rounded-lg 
+                            border border-white border-solid cursor-pointer"
+                           > 
+                           LOGIN
+                        </Link>}
                  </ul>
                 )}
             </nav>
