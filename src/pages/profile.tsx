@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Header } from './header';
+import { Header } from '../components/header';
 import { Footer } from "../components/footer";
 import { ScaleLoader } from "react-spinners";
 import { api } from "../services/axios";

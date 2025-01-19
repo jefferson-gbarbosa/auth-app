@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-toastify';
 import { Button } from '../components/button';
 import { AxiosError } from 'axios';
-import { Header } from './header';
+import { Header } from '../components/header';
 import { api } from '../services/axios';
 
 const OTPValues = z.object({

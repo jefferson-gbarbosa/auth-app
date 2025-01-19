@@ -8,7 +8,7 @@ import { AxiosError } from 'axios';
 import { Button } from '../components/button';
 import { toast } from 'react-toastify';
 import { Mail } from 'lucide-react';
-import { Header } from './header';
+import { Header } from '../components/header';
 import { api } from '../services/axios';
 
 const PasswordSchema = z.object({

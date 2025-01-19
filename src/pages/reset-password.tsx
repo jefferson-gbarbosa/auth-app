@@ -9,7 +9,7 @@ import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
 import { LockKeyhole } from 'lucide-react';
 import { toast } from 'react-toastify';
-import { Header } from './header';
+import { Header } from '../components/header';
 import { api } from '../services/axios';
 
 const ResetPasswordSchema = z.object({

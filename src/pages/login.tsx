@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, LockKeyhole, Mail } from 'lucide-react';
 import { Button } from '../components/button';
-import { Header } from './header';
+import { Header } from '../components/header';
 
 
 const LoginValues = z.object({
