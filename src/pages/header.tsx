@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { List } from '../components/list';
 import { Logo } from '../components/logo';
 import { ButtonLogout } from '../components/button-logout';
-import { User } from './user';
+import { User } from '../components/user';
 import { useEffect, useState } from 'react';
 
 export function Header(){
