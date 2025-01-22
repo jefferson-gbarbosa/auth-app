@@ -8,8 +8,6 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, LockKeyhole, Mail } from 'lucide-react';
 import { Button } from '../components/button';
-import { Header } from '../components/header';
-
 
 const LoginValues = z.object({
     email: z.string().min(1, { message: 'This is required' }).email({ message: 'Must be a valid email' }),
@@ -57,17 +55,16 @@ export function Login() {
 
     return (
         <>  
-            <Header />
             <Form.Root 
-                className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
+                className="p-8 sm:p-6 md:p-8 fixed w-11/12 top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <h2 className='text-3xl mb-0.5 border-[#11181C]'>Welcome back! &#128079;</h2>
-                <p className='inline-block text-base mb-4 text-[#687076]'>Login with your account!</p> 
+                <h2 className='text-xl sm:text-2xl md:text-3xl mb-0.5 border-[#11181C]'>Welcome back! &#128079;</h2>
+                <p className='text-sm sm:text-base inline-block mb-4 text-[#687076]'>Login with your account!</p> 
                 <Form.Field name='email' className='mb-4'>
                     <Form.Label className='text-[#11181C]'>Email</Form.Label>
                     <div className='relative'>
-                       <Mail size={20}  className={`absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}`}/>
+                       <Mail size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}`}/>
                        <input
                         {...register("email", { required: "Email is required" })}
                         className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
@@ -80,9 +77,9 @@ export function Login() {
                 <Form.Field name='password' className='mb-6'>
                     <Form.Label className='text-[#11181C]'>Password</Form.Label>
                     <div className='relative'>
-                        <LockKeyhole size={20} className={`absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 ${errors.password ? 'text-red-600' : ' text-gray-500'}`}/>
+                    <LockKeyhole size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
                         <div className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
-                            {showPassword ? <Eye size={20} className="text-gray-500" /> : <EyeOff size={20} className="text-gray-500" />}
+                            {showPassword ? <Eye size={20} className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500" /> : <EyeOff size={20} className="text-gray-500" />}
                         </div>
                         <input
                             {...register("password", { required: "Password is required" })}

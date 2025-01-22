@@ -77,15 +77,14 @@ export function Signup() {
 
     return (
         <Form.Root 
-                className="p-8 fixed max-w-md w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C]"
+                className="p-7 sm:p-6 md:p-8 fixed w-11/12 max-h-screen top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <h2 className='text-3xl mb-3 border-[#11181C]'>Sign up</h2>     
-                <Form.Field name='name' className='mb-4'>
+                <h2 className='text-xl sm:text-2xl md:text-3xl mb-3 border-[#11181C]'>Sign up</h2>     
+                <Form.Field name='name' className='mb-3'>
                     <Form.Label className='text-[#11181C]'>Nome</Form.Label>
-
                     <div className='relative'>
-                       <SquareUser size={20} className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500"/>
+                       <SquareUser size={20} className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
                         <input
                          {...register("name", { required: "Please input your Name" })}
                          className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
@@ -96,10 +95,10 @@ export function Signup() {
                     {errors.name && <span className="text-red-600">{errors.name.message}</span>}
                 </Form.Field>
           
-                <Form.Field name='email' className='mb-4'>
+                <Form.Field name='email' className='mb-3'>
                     <Form.Label className='text-[#11181C]'>Email</Form.Label>
                     <div className="relative">
-                        <Mail size={20}  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                        <Mail size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
                         <input
                             {...register("email", { required: "Email is required" })}
                             className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
@@ -111,10 +110,10 @@ export function Signup() {
                     {errors.email && <span className="text-red-600">{errors.email.message}</span>}
                 </Form.Field>
 
-                <Form.Field name='password' className='mb-6'>
+                <Form.Field name='password' className='mb-3'>
                     <Form.Label className='text-[#11181C]'>Password</Form.Label>
                     <div className="relative">
-                        <LockKeyhole size={20}  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
+                        <LockKeyhole size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
                         <div className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
                             {showPassword ? <Eye size={20} className="text-gray-500" /> : <EyeOff size={20} className="text-gray-500" />}
                         </div>
@@ -128,10 +127,10 @@ export function Signup() {
                     </div>
                     {errors.password && <span className="text-red-600">{errors.password.message}</span>}
                 </Form.Field>
-                <div className='mb-6 px-2.5'>
+                <div className='mb-2 px-2.5'>
                   <PasswordCheckList password={password}/>
                 </div>
-                <Form.Submit asChild className='mb-6'>
+                <Form.Submit asChild className='mb-3'>
                     <Button disabled={loading} text={loading ? ' Signup Now in...' : ' Signup Now'}/>
                 </Form.Submit>
                 <div className='text-center text-sm'>
