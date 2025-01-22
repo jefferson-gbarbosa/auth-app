@@ -57,7 +57,7 @@ export function Profile() {
     return (
         <>
             <Header />
-            <div className="flex justify-center flex-col items-center max-w-screen-xl mx-auto min-h-screen">
+            <section className="flex justify-center flex-col items-center max-w-screen-xl mx-auto min-h-screen">
                 <h1 className="text-3xl pb-4 text-white">Seja bem-vindo, {profile?.name}!</h1>
                 <p className="text-lg text-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -68,7 +68,7 @@ export function Profile() {
                     A qui porro corporis laudantium sapiente amet. 
                     Architecto, quod error eveniet itaque repudiandae eius eligendi, magnam dolore sed impedit nobis adipisci aliquid!
                 </p>
-            </div>
+            </section>
             <Footer />
         </>
     );
