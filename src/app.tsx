@@ -7,6 +7,7 @@ import { ForgotPassword } from './pages/forgot-password';
 import { ResetPassword } from './pages/reset-password';
 import { EmailVerification } from './pages/email-verification';
 import { ProtectedRoute } from './components/protected-route';
+import { ErrorNotPage } from './pages/not-found-error';
 
 export function App() {  
   return (
@@ -22,7 +23,7 @@ export function App() {
             <Route path= '/forgot-password' element={<ForgotPassword />}/>
             <Route path= '/reset-password/:token' element={<ResetPassword />}/>
             <Route path= '/email-verification' element={<EmailVerification />}/>
-            <Route path="*" element={<div>404: Page Not Found</div>} /> {/* 404 Route */}
+            <Route path="*" element={<ErrorNotPage />} /> {/* 404 Route */}
         </Routes>
     </BrowserRouter>
   )

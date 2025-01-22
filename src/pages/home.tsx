@@ -6,9 +6,8 @@ export function Home(){
     return(
         <>
             <Header />
-            <section className="h-screen w-full py-6 md:py-12
-            ">
-            <div className="max-w-screen-xl mx-auto inset-0 flex flex-col md:justify-center items-center px-4 md:px-8 lg:px-16 text-center"> 
+            <section className="h-screen w-full py-6 md:py-12">
+                <div className="max-w-screen-xl mx-auto inset-0 flex flex-col md:justify-center items-center px-4 md:px-8 lg:px-16 text-center"> 
                     <div className="max-w-2xl md:w-full"> 
                         <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
                             Tenha acesso a diversas oportunidades para desenvolvedores.
