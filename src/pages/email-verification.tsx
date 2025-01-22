@@ -41,7 +41,7 @@ export function EmailVerification() {
 			}
 			setOtp(newOtp);
 			setValue('otp', newOtp.join(''));
-		// Focando no primeiro campo vazio após o código ser colado
+		
 			const firstEmptyIndex = newOtp.findIndex((digit) => digit === '');
 			if (firstEmptyIndex !== -1) {
 			  inputRefs.current[firstEmptyIndex]?.focus();
@@ -50,12 +50,12 @@ export function EmailVerification() {
 			newOtp[index] = value;
 			setOtp(newOtp);
 			setValue('otp', newOtp.join(''));
-			// Move focus to the next input field if value is entered
+			
 			if (value && index < 5) {
 				inputRefs.current[index + 1]?.focus();
 			}
 		}
-		// Move focus to next input if value is entered
+		
 		if (value && index < 5) {
 		inputRefs.current[index + 1]?.focus();
 		}
@@ -89,7 +89,7 @@ export function EmailVerification() {
 					navigate("/");
 				},4000)	
 			} else {
-			   toast.error("Failed to verify email. Please try again.");  // Show error toast if status isn't 200
+			   toast.error("Failed to verify email. Please try again.");
 			}	
 		} catch (err) {
 			if (err instanceof AxiosError) {
@@ -99,14 +99,13 @@ export function EmailVerification() {
 				setError('An unexpected error occurred');
 			  }
 		} finally {
-			setLoading(false);  // Always stop loading state, whether successful or not
+			setLoading(false); 
 		}
 	};
 
-	// Função para verificar se todos os campos de OTP estão preenchidos corretamente
 	useEffect(() => {
-		const isValidOtp = otp.every((digit) => digit !== "");  // Verifica se todos os campos têm valor
-		setIsButtonDisabled(!isValidOtp); // Desabilita o botão se algum campo estiver vazio
+		const isValidOtp = otp.every((digit) => digit !== "");
+		setIsButtonDisabled(!isValidOtp); 
 	}, [otp]);
 
 	return (

@@ -34,7 +34,6 @@ export function ForgotPassword() {
             const res = await api.post('/forgot-password', data);
             if (res.status === 200) {
                 setLoading(true)
-                // Optionally show success message
                 toast.success('Check your email inbox!', {
                     position: "top-center",
                     autoClose: 3000,

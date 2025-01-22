@@ -23,7 +23,7 @@ export function App() {
             <Route path= '/forgot-password' element={<ForgotPassword />}/>
             <Route path= '/reset-password/:token' element={<ResetPassword />}/>
             <Route path= '/email-verification' element={<EmailVerification />}/>
-            <Route path="*" element={<ErrorNotPage />} /> {/* 404 Route */}
+            <Route path="*" element={<ErrorNotPage />} /> 
         </Routes>
     </BrowserRouter>
   )

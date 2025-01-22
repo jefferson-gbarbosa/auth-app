@@ -4,10 +4,10 @@ import Cookies from 'js-cookie'
 // Create axios instance
 const api = axios.create({
     baseURL: 'http://localhost:3000/auth',
-    withCredentials: true, // Ensure cookies are sent along with requests
+    withCredentials: true, 
 });
 
-// // Request interceptor to add the token
+//Request interceptor to add the token
 api.interceptors.request.use(
   (config) => {
       const headers = config.headers ?? {} 
@@ -22,7 +22,7 @@ api.interceptors.request.use(
       return Promise.reject(error);
   }
 );
-//Cria um tipo que irá servir de base para as requests falhadas
+//Creates a type that will serve as the basis for failed requests
 type FailedRequestQueue = {
   onSuccess: (newToken: string) => void
   onFailure: () => void
@@ -31,7 +31,7 @@ type FailedRequestQueue = {
 let failedRequestsQueue: FailedRequestQueue[] = []
 let isRefreshing = false
   
-//Interceptador para verificar se o token expirou
+//Interceptor to check if token has expired
 api.interceptors.response.use(
     response => response,
     async (error) => {
