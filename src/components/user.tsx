@@ -26,12 +26,12 @@ export function User() {
     }, []);
 
     if (loading) {
-        return <p className="text-3xl text-white">Loading...</p>;
+        return <p className="text-xl md:text-3xl text-white">Carregando...</p>;
     }
 
     if (error) {
-        return <p className="text-red-600">{error}</p>;
+        return <p className="text-red-500 text-lg md:text-xl">{error}</p>;
     }
 
-    return <p className="text-3xl text-white">{email}</p>;
+    return <p className="mb-4 md:mb-0 text-xl md:text-3xl text-white">{email}</p>;
 }

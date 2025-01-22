@@ -76,67 +76,68 @@ export function Signup() {
     }
 
     return (
-        <Form.Root 
-                className="p-7 sm:p-6 md:p-8 fixed w-11/12 max-h-screen top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg"
-                onSubmit={handleSubmit(onSubmit)}
-            >
-                <h2 className='text-xl sm:text-2xl md:text-3xl mb-3 border-[#11181C]'>Sign up</h2>     
-                <Form.Field name='name' className='mb-3'>
-                    <Form.Label className='text-[#11181C]'>Nome</Form.Label>
-                    <div className='relative'>
-                       <SquareUser size={20} className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
-                        <input
-                         {...register("name", { required: "Please input your Name" })}
-                         className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
-                         type="text" 
-                         placeholder="Enter your name" 
-                        />
-                    </div>
-                    {errors.name && <span className="text-red-600">{errors.name.message}</span>}
-                </Form.Field>
-          
-                <Form.Field name='email' className='mb-3'>
-                    <Form.Label className='text-[#11181C]'>Email</Form.Label>
-                    <div className="relative">
-                        <Mail size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
-                        <input
-                            {...register("email", { required: "Email is required" })}
-                            className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
-                            type="email"
-                            placeholder="Enter your email"
-                        />
-                    </div>
-                  
-                    {errors.email && <span className="text-red-600">{errors.email.message}</span>}
-                </Form.Field>
+        <>
+            <section className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+                <Form.Root
+                    className="bg-white rounded-xl border border-solid border-[#11181C] p-6 sm:p-8 md:p-10 w-full max-w-md"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
+                        <h2 className='text-xl sm:text-2xl md:text-3xl mb-3 border-[#11181C]'>Sign up</h2>
+                        <Form.Field name='name' className='mb-3'>
+                            <Form.Label className='text-[#11181C]'>Nome</Form.Label>
+                            <div className='relative'>
+                                <SquareUser size={20} className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}`} />
+                                <input
+                                    {...register("name", { required: "Please input your Name" })}
+                                    className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
+                                    type="text"
+                                    placeholder="Enter your name" />
+                            </div>
+                            {errors.name && <span className="text-red-600">{errors.name.message}</span>}
+                        </Form.Field>
 
-                <Form.Field name='password' className='mb-3'>
-                    <Form.Label className='text-[#11181C]'>Password</Form.Label>
-                    <div className="relative">
-                        <LockKeyhole size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}` }/>
-                        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
-                            {showPassword ? <Eye size={20} className="text-gray-500" /> : <EyeOff size={20} className="text-gray-500" />}
+                        <Form.Field name='email' className='mb-3'>
+                            <Form.Label className='text-[#11181C]'>Email</Form.Label>
+                            <div className="relative">
+                                <Mail size={20} className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}`} />
+                                <input
+                                    {...register("email", { required: "Email is required" })}
+                                    className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
+                                    type="email"
+                                    placeholder="Enter your email" />
+                            </div>
+
+                            {errors.email && <span className="text-red-600">{errors.email.message}</span>}
+                        </Form.Field>
+
+                        <Form.Field name='password' className='mb-3'>
+                            <Form.Label className='text-[#11181C]'>Password</Form.Label>
+                            <div className="relative">
+                                <LockKeyhole size={20} className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.email ? 'text-red-600' : ' text-gray-500'}`} />
+                                <div className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
+                                    {showPassword ? <Eye size={20} className="text-gray-500" /> : <EyeOff size={20} className="text-gray-500" />}
+                                </div>
+                                <input
+                                    {...register("password", { required: "Password is required" })}
+                                    className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.password ? 'border-red-600' : ''}`}
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="Enter your password"
+                                    onChange={(e) => setPassword(e.target.value)} />
+                            </div>
+                            {errors.password && <span className="text-red-600">{errors.password.message}</span>}
+                        </Form.Field>
+                        <div className='mb-2 px-2.5'>
+                            <PasswordCheckList password={password} />
                         </div>
-                         <input
-                            {...register("password", { required: "Password is required" })}
-                            className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.password ? 'border-red-600' : ''}`}
-                            type={showPassword ? "text" : "password"}
-                            placeholder="Enter your password"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    {errors.password && <span className="text-red-600">{errors.password.message}</span>}
-                </Form.Field>
-                <div className='mb-2 px-2.5'>
-                  <PasswordCheckList password={password}/>
-                </div>
-                <Form.Submit asChild className='mb-3'>
-                    <Button disabled={loading} text={loading ? ' Signup Now in...' : ' Signup Now'}/>
-                </Form.Submit>
-                <div className='text-center text-sm'>
-                    Already have an account? <Link to="/login" className='text-[#11181C] cursor-pointer hover:underline hover:text-[#687076]'>Login</Link>
-                </div>
-                {error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
-            </Form.Root>
+                        <Form.Submit asChild className='mb-3'>
+                            <Button disabled={loading} text={loading ? ' Signup Now in...' : ' Signup Now'} />
+                        </Form.Submit>
+                        <div className='text-center text-sm'>
+                            Already have an account? <Link to="/login" className='text-[#11181C] cursor-pointer hover:underline hover:text-[#687076]'>Login</Link>
+                        </div>
+                        {error && <div className="text-red-600 mt-4 text-center">{error}</div>}
+                </Form.Root>
+            </section>
+        </>
     );
 }

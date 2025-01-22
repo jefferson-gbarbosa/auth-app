@@ -20,8 +20,8 @@ export function Header(){
         location.pathname === '/reset-password'|| 
         location.pathname === '/forgot-password'; 
     return(
-        <header className="fixed w-full z-50">
-            <nav className=" max-w-screen-xl mx-auto flex justify-between items-center py-6 md:py-12 px-4 md:px-0 flex-col md:flex-row">
+        <header className="w-full z-50">
+            <nav className="max-w-screen-xl mx-auto flex justify-between items-center py-6 md:py-12 px-4 md:px-0 flex-col md:flex-row">
                 <Link to="/">
                   <Logo />
                 </Link>

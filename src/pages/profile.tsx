@@ -57,17 +57,23 @@ export function Profile() {
     return (
         <>
             <Header />
-            <section className="flex justify-center flex-col items-center max-w-screen-xl mx-auto min-h-screen">
-                <h1 className="text-3xl pb-4 text-white">Seja bem-vindo, {profile?.name}!</h1>
-                <p className="text-lg text-white">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Dolores nisi consequatur culpa eos veritatis atque molestiae est at recusandae, 
-                    praesentium non magnam eveniet sunt nobis reprehenderit soluta cum dignissimos impedit?
-                    
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                    A qui porro corporis laudantium sapiente amet. 
-                    Architecto, quod error eveniet itaque repudiandae eius eligendi, magnam dolore sed impedit nobis adipisci aliquid!
-                </p>
+            <section className="w-full py-6 md:py-24 lg:py-32">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col items-center  h-[calc(100vh-128px)]"> 
+                    <div className="text-center w-full md:w-3/4 lg:w-2/3"> 
+                        <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
+                            Seja bem-vindo, {profile?.name}!
+                        </h1>
+                        <p className="text-white text-lg md:text-xl lg:text-lg leading-relaxed">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dolores nisi consequatur culpa eos veritatis atque molestiae est at recusandae,
+                            praesentium non magnam eveniet sunt nobis reprehenderit soluta cum dignissimos impedit?
+
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            A qui porro corporis laudantium sapiente amet.
+                            Architecto, quod error eveniet itaque repudiandae eius eligendi, magnam dolore sed impedit nobis adipisci aliquid!
+                        </p>
+                    </div>
+                </div>
             </section>
             <Footer />
         </>
