@@ -55,7 +55,8 @@ npm run dev
 ![](./src/assets/img/Screenshots-03.png)<br/>
 * Página para Recuperação de Senhas
 ![](./src/assets/img/Screenshots-04.png)
-
+* Página de Error Not Found 
+![](./src/assets/img/Screenshots-05.png)
 ## :email: Contato
 
 E-mail: [**jeffersonqx@gmail.com**](mailto:jeffersonqx@gmail.com)
