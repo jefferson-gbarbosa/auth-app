@@ -63,36 +63,39 @@ export function ForgotPassword() {
     return (
         <>  
            <Header />
-           <section className="min-h-screen  items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg">
-           <h2 className='text-3xl mb-2 border-[#11181C] text-center'>Forgot Password</h2>
-            {!isSubmitted ? (
-                    <Form.Root 
-                        onSubmit={handleSubmit(onSubmit)}>  
-                        <Form.Field name='email' className='mb-4'>
-                            <p className='text-base mb-4 text-[#687076] text-center'>
-                                Enter your email address and we'll send you a link to reset your password.
-                            </p>
-                            <Form.Label className='text-[#11181C]'>Email</Form.Label>
-                            <input
-                                {...register("email")}
-                                className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-2.5 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
-                                type="email"
-                            />
-                            {errors.email && <span className="text-red-600">{errors.email.message}</span>}
-                        </Form.Field>
+           <section className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-xl border border-solid border-[#11181C] p-6 sm:p-8 md:p-10 w-full max-w-md">
+                <h2 className='text-3xl mb-2 border-[#11181C] text-center'>Forgot Password</h2>
+                {!isSubmitted ? (
+                        <Form.Root 
+                            onSubmit={handleSubmit(onSubmit)}
+                            >  
+                            <Form.Field name='email' className='mb-4'>
+                                <p className='text-base mb-4 text-[#687076] text-center'>
+                                    Enter your email address and we'll send you a link to reset your password.
+                                </p>
+                                <Form.Label className='text-[#11181C]'>Email</Form.Label>
+                                <input
+                                    {...register("email")}
+                                    className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-2.5 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.email ? 'border-red-600' : ''}`}
+                                    type="email"
+                                />
+                                {errors.email && <span className="text-red-600">{errors.email.message}</span>}
+                            </Form.Field>
 
-                        <Form.Submit asChild className='mb-6'>
-                            <Button disabled={loading} text={loading ? 'Sending...' : 'Send Reset Link'}/>
-                        </Form.Submit>  
-                    </Form.Root> 
-            ) : (
-                <div className='text-center'>
-                    <Mail className='h-12 w-12 text-[#2B805A] inline-block mb-6'/>
-                    <p className='text-[#11181C] mb-6'>
-                        If an account exists for <strong>{email}</strong>, you will receive a password reset link shortly.
-                    </p>
-                </div>   
-            )}    
+                            <Form.Submit asChild className='mb-6'>
+                                <Button disabled={loading} text={loading ? 'Sending...' : 'Send Reset Link'}/>
+                            </Form.Submit>  
+                        </Form.Root> 
+                ) : (
+                    <div className='text-center'>
+                        <Mail className='h-12 w-12 text-[#2B805A] inline-block mb-6'/>
+                        <p className='text-[#11181C] mb-6'>
+                            If an account exists for <strong>{email}</strong>, you will receive a password reset link shortly.
+                        </p>
+                    </div>   
+                )}   
+            </div> 
             {error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
            </section>
         </>

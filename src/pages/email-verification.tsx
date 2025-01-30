@@ -86,7 +86,7 @@ export function EmailVerification() {
 					theme: "light",
 				});
 				setTimeout(()=>{
-					navigate("/");
+					navigate("/login");
 				},4000)	
 			} else {
 			   toast.error("Failed to verify email. Please try again.");
@@ -111,32 +111,36 @@ export function EmailVerification() {
 	return (
 		<>
 		    <Header />
-			<Form.Root 
-				className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg"
-				onSubmit={handleSubmit(onSubmit)}
-			>
-				<h2 className='text-xl sm:text-2xl md:text-3xl mb-3 border-[#11181C]'>Verify Your Email</h2>
-				<p className='inline-block text-base mb-4 text-[#687076]'>Enter the 6-digit code sent to your email address.</p>
-				<div className='flex justify-between mb-3' >
-					{otp.map((digit, index) => (
-						<input
-							{...register("otp")}
-							type="text"
-							key={index}
-							ref={(el) => (inputRefs.current[index] = el)}
-							value={digit}
-							onChange={(e) => handleChange(index, e.target.value)}
-							onKeyDown={(e) => handleKeyDown(index, e)}
-							className='w-12 h-12 text-center text-[#687076] text-2xl font-bold  border-2 border-gray-600 rounded-lg focus:border-[#2B805A] focus:outline-none'
-						/>
-					))}
-				</div> 
-				{errors.otp && <span className="text-red-600 mb-2 block">{errors.otp.message}</span>}
-				<Form.Submit asChild className='mb-3'>
-					<Button disabled={loading || isButtonDisabled} text={loading ? 'Verifying...' : 'Verify Email'} />
-				</Form.Submit>
-				{error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
-			</Form.Root>
+			<section className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+				<Form.Root 
+					className='bg-white rounded-xl border border-solid border-[#11181C] p-6 sm:p-8 md:p-10 w-full max-w-md'
+					onSubmit={handleSubmit(onSubmit)}
+				>
+					<div className='text-center mb-6'>
+						<h2 className='text-xl sm:text-2xl md:text-3xl mb-1 text-[#11181C]'>Verify Your Email</h2>
+						<p className='text-sm sm:text-base text-[#687076]'>Enter the 6-digit code sent to your email address.</p>
+					</div>
+					<div className='flex justify-between mb-3 sm:mb-4 md:mb-6' >
+						{otp.map((digit, index) => (
+							<input
+								{...register("otp")}
+								type="text"
+								key={index}
+								ref={(el) => (inputRefs.current[index] = el)}
+								value={digit}
+								onChange={(e) => handleChange(index, e.target.value)}
+								onKeyDown={(e) => handleKeyDown(index, e)}
+								className='w-12 h-12 text-center text-[#687076] text-2xl font-bold  border-2 border-gray-600 rounded-lg focus:border-[#2B805A] focus:outline-none'
+							/>
+						))}
+					</div> 
+					{errors.otp && <span className="text-red-600 mb-2 block">{errors.otp.message}</span>}
+					<Form.Submit asChild className='mb-3 sm:mb-4 md:mb-6'>
+						<Button disabled={loading || isButtonDisabled} text={loading ? 'Verifying...' : 'Verify Email'} />
+					</Form.Submit>
+					{error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
+				</Form.Root>
+			</section>
 		</>
 	);
 }

@@ -9,7 +9,6 @@ import { Button } from '../components/button';
 import { PasswordCheckList } from '../components/password-check-list';
 import { LockKeyhole } from 'lucide-react';
 import { toast } from 'react-toastify';
-import { Header } from '../components/header';
 import { api } from '../services/axios';
 
 const ResetPasswordSchema = z.object({
@@ -76,13 +75,15 @@ export function ResetPassword() {
 
     return (
         <>  
-            <Header/>
+            <section  className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <Form.Root 
-                className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg"
+                className="bg-white rounded-xl border border-solid border-[#11181C] p-6 sm:p-8 md:p-10 w-full max-w-md"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <h2 className='text-xl sm:text-2xl md:text-3xl mb-3 border-[#11181C]'>Reset Password</h2>
-                <p className='inline-block text-base mb-4 text-[#687076]'>Enter a new password for noreply@shopify.com</p>
+                <div className='text-center mb-6'>
+                <h2 className='text-xl sm:text-2xl md:text-3xl mb-1 text-[#11181C]'>Reset Password</h2>
+                <p className='text-sm sm:text-base text-[#687076]'>Enter a new password for noreply@shopify.com</p>
+                </div>
                 <Form.Field name='password' className='mb-3'>
                     <Form.Label className='text-[#11181C]'>Password</Form.Label>
                     <div className='relative'>
@@ -100,7 +101,7 @@ export function ResetPassword() {
                 <Form.Field name='password' className='mb-3'>
                     <Form.Label className='text-[#11181C]'>Confirm Password</Form.Label>
                     <div className='relative'>
-                        <LockKeyhole size={20} className={`absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 ${errors.password ? 'text-red-600' : ' text-gray-500'}`}/>
+                    <LockKeyhole size={20}  className={`w-4 h-4 sm:w-5 sm:h-5 absolute left-2 top-1/2 transform -translate-y-1/2 ${errors.password ? 'text-red-600' : ' text-gray-500'}` }/>
                         <input
                             className={`box-border text-[#687076] inline-flex h-[44px] w-full appearance-none items-center justify-center rounded px-10 outline-none border border-solid border-[#687076] caret-zinc-500 ${errors.password ? 'border-red-600' : ''}`}
                             type={"password"}
@@ -118,6 +119,7 @@ export function ResetPassword() {
                 </Form.Submit>
                 {error && <div className="text-red-600 mt-4 text-center">{error}</div>} 
             </Form.Root>
+            </section> 
         </>
     );
 }

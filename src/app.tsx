@@ -11,7 +11,7 @@ import { ErrorNotPage } from './pages/not-found-error';
 
 export function App() {  
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/auth-app">
       <Routes>
             <Route path= '/' element={localStorage.getItem('token')?<Profile/>:<Home/>}/>
             <Route path= '/home' element={<Home />}/>
