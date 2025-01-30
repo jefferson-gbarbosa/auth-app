@@ -63,7 +63,7 @@ export function ForgotPassword() {
     return (
         <>  
            <Header />
-           <section className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg">
+           <section className="min-h-screen  items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-xl border border-solid border-[#11181C] sm:max-w-sm md:max-w-md lg:max-w-lg">
            <h2 className='text-3xl mb-2 border-[#11181C] text-center'>Forgot Password</h2>
             {!isSubmitted ? (
                     <Form.Root 
