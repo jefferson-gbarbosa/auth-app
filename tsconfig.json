@@ -1,8 +1,18 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "_version": "20.1.0",
+
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["cypress", "node"]
+    "lib": ["es2023"],
+    "module": "node16",
+    "target": "es2022",
+    "types": ["cypress", "node"],
+
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node16",
+    "jsx": "react-jsx",
   },
   "include": ["**/*.ts"]
 }

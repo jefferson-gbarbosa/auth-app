@@ -1,0 +1,1 @@
+{"root":["./cypress.config.ts","./cypress/e2e/spec.cy.ts","./cypress/e2e/home/home.cy.ts","./cypress/e2e/signup/signup.cy.ts","./cypress/support/commands.ts","./cypress/support/e2e.ts","./src/vite-env.d.ts"],"version":"5.7.3"}
