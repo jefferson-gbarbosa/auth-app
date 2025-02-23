@@ -5,6 +5,7 @@ import { ButtonLogout } from './button-logout';
 import { User } from './user';
 import { useEffect, useState } from 'react';
 import { RiGithubFill, RiLinkedinFill } from 'react-icons/ri';
+import React from 'react';
 
 export function Header(){
     const location = useLocation();  

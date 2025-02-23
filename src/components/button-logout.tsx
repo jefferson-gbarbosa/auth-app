@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../services/axios';
+import React from 'react';
 
 interface ButtonLogoutProps {
     setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
